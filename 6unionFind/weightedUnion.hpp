@@ -4,22 +4,25 @@
 #include <iostream>
 using namespace std;
 
-#ifndef QUICKUNIONHPP
-#define QUICKUNIONHPP
+#ifndef WEIGHTEDUNIONHPP
+#define WEIGHTEDUNIONHPP
 
 
 
 
-class QuickUnion {
+class WeightedUnion {
  protected:
   int* _componentId;
+  int* _componentSize;
   int _size;
 
  public:
-  QuickUnion(int n) {
+  WeightedUnion(int n) {
     _componentId = new int[n];
+    _componentSize = new int[n];
     for (int i=0; i<n; i++){
       _componentId[i] = i;
+      _componentSize[i] = 1;
     }
     _size = n;
   }
@@ -32,10 +35,10 @@ class QuickUnion {
   void union_(int q, int p);
   void print();
 
-  ~QuickUnion() { delete[] _componentId; };
+  ~WeightedUnion() { delete[] _componentId; };
 };
 
-void QuickUnion::print() {
+void WeightedUnion::print() {
   int i;
   for (i=0; i<_size; i++){
     cout << i << '-';
@@ -47,16 +50,23 @@ void QuickUnion::print() {
   cout << endl;
 }
 
-bool QuickUnion::find(int q, int p) {
+bool WeightedUnion::find(int q, int p) {
   while (_componentId[q] != q) {q = _componentId[q];}
   while (_componentId[p] != p) {p = _componentId[p];}
   return (q == p);
 }
 
-void QuickUnion::union_(int q, int p) {
+void WeightedUnion::union_(int q, int p) {
   while (_componentId[q] != q) {q = _componentId[q];}
   while (_componentId[p] != p) {p = _componentId[p];}
-  _componentId[q] = p;
+  if (_componentSize[q] > _componentSize[p]){
+    _componentId[p] = q;
+    _componentSize[q] = _componentSize[q] + _componentSize[p];
+  } else {
+    _componentId[q] = p;
+    _componentSize[p] = _componentSize[q] + _componentSize[p];
+  }
+
 }
 
 #endif

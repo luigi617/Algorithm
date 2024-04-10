@@ -7,7 +7,6 @@ using namespace std;
 #ifndef QUICKFINDHPP
 #define QUICKFINDHPP
 
-#define DEFAULTHEAPSIZE 1023
 
 
 
@@ -18,7 +17,7 @@ class QuickFind {
 
  public:
   QuickFind(int n) {
-    _componentId = new int[DEFAULTHEAPSIZE];
+    _componentId = new int[n];
     for (int i=0; i<n; i++){
       _componentId[i] = i;
     }
