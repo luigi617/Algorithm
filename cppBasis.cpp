@@ -35,3 +35,10 @@ void cppBasisDescription(){
     cout << j << endl; // 50 - 10
 }
 
+template <class T>
+void swapFun(T &a, T &b){
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
