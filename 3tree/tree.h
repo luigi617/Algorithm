@@ -35,6 +35,9 @@ int compare<std::string, std::string> (std::string a, std::string b) {
   return b.compare(a);
 }
 
+
+
+
 template <typename T> struct Node {
   T element;
   int height;
@@ -46,6 +49,8 @@ template <typename T> struct Node {
   Node(T element, int height)
       : element{element}, height{height}, left{nullptr}, right{nullptr} {}
 };
+
+
 
 template <typename T> class Tree {
 private:
@@ -371,3 +376,5 @@ string Tree<T>::post_order() {
 }
 
 #endif
+
+// augmented tree (weight) select and rank functions are in slide L06c
