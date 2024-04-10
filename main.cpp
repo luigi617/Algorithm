@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "cppBasis.cpp"
+# include "1array/StackAndQueue/StackAndQueue.h"
 #include "2sorting/bubbleSort.cpp"
 #include "2sorting/insertionSort.cpp"
 #include "2sorting/selectionSort.cpp"
@@ -12,44 +13,40 @@
 #include "6unionFind/quickUnion.hpp"
 #include "6unionFind/weightedUnion.hpp"
 #include "6unionFind/pathCompressionWeightedUnion.hpp"
+#include "7graph/linkedListGraph.h"
+#include "7graph/AdjacencyListGraph.h"
 using namespace std;
 
 int main(){
-    QuickUnion* q = new QuickUnion(10);
-    WeightedUnion* p = new WeightedUnion(10);
-    PathCompressionWeightedUnion* l = new PathCompressionWeightedUnion(10);
-    q->union_(3, 4);
-    q->union_(4, 9);
-    q->union_(8, 0);
-    q->union_(2, 3);
-    q->union_(5, 6);
-    q->union_(5, 9);
-    q->union_(7, 3);
-    q->union_(4, 8);
-    q->union_(6, 1);
-    q->print();
+    LinkedListGraph* g = new LinkedListGraph(10);
+    AdjacencyListGraph* a = new AdjacencyListGraph(10);
+    g->addEdge(0, 1);
+    g->addEdge(0, 2);
+    g->addEdge(1, 3);
+    g->addEdge(2, 4);
+    g->addEdge(3, 4);
 
-    p->union_(3, 4);
-    p->union_(4, 9);
-    p->union_(8, 0);
-    p->union_(2, 3);
-    p->union_(5, 6);
-    p->union_(5, 9);
-    p->union_(7, 3);
-    p->union_(4, 8);
-    p->union_(6, 1);
-    p->print();
+    g->addEdge(5, 6);
+    g->printGraph();
 
-    l->union_(3, 4);
-    l->union_(4, 9);
-    l->union_(8, 0);
-    l->union_(2, 3);
-    l->union_(5, 6);
-    l->union_(5, 9);
-    l->union_(7, 3);
-    l->union_(4, 8);
-    l->union_(6, 1);
-    l->print();
-    
+    a->addEdge(0, 1);
+    a->addEdge(0, 2);
+    a->addEdge(1, 3);
+    a->addEdge(2, 4);
+    a->addEdge(3, 4);
+
+    a->addEdge(5, 6);
+    a->printGraph();
+
+    // List<int> output;
+    // a->DFS(0, output, true);
+    // for (output.start(); !output.end(); output.next()){
+    //     cout << output.current();
+    // }
+
+    cout << "???";
+    cout << g->nComponents();
+
+
     return 0;
 }

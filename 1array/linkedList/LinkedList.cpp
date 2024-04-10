@@ -1,7 +1,7 @@
 
 
-#ifndef SIMPLELINKEDLISTTEMPLATEHPP
-#define SIMPLELINKEDLISTTEMPLATEHPP
+#ifndef LINKEDLISTHPP
+#define LINKEDLISTHPP
 
 #include <iostream>
 #include "LinkedList.h"
